@@ -1,0 +1,2011 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/13/2024 9:43:17 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="NHATNAM-SLAVE"
+  DTS:CreatorName="NHATNAM-SLAVE\Nam"
+  DTS:DTSID="{7B9E90AD-26AF-477E-A7E3-C8226EFC0185}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5556.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{117C2A22-C34A-4A38-A668-1EFFD7A96A7C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.Olist]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1F7F4CE8-364B-45EA-A6B4-83999CD6808F}"
+      DTS:ObjectName="NHATNAM-SLAVE\NHATNAM.Olist">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=NHATNAM-SLAVE\NHATNAM;Initial Catalog=Olist;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistDW]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{4E73D3B6-5831-4045-8F74-7D7344491FC9}"
+      DTS:ObjectName="NHATNAM-SLAVE\NHATNAM.OlistDW">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=NHATNAM-SLAVE\NHATNAM;Initial Catalog=OlistDW;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{4E73D3B6-5831-4045-8F74-7D7344491FC9}NHATNAM-SLAVE\NHATNAM.OlistDW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistStage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E51AF4E3-A79C-4980-8FDD-B99129D13AF5}"
+      DTS:ObjectName="NHATNAM-SLAVE\NHATNAM.OlistStage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=NHATNAM-SLAVE\NHATNAM;Initial Catalog=OlistStage;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistStage 1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7A1DFEE1-1AB2-4490-ADEE-2349E69A1766}"
+      DTS:ObjectName="NHATNAM-SLAVE\NHATNAM.OlistStage 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=NHATNAM-SLAVE\NHATNAM;Initial Catalog=OlistStage;Provider=SQLOLEDB.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF - Extract"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8eef3060-8fc8-4ea8-955b-918133447666}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Extract"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Extract\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stgProducts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Extract\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistStage]"
+                  connectionManagerRefId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]" />
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_category_name]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_category_name"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_category_name]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]" />
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_name_length]"
+                      cachedDataType="numeric"
+                      cachedName="product_name_length"
+                      cachedPrecision="9"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name_length]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name_length]" />
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_description_length]"
+                      cachedDataType="numeric"
+                      cachedName="product_description_length"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_description_length]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_description_length]" />
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_photos_qty]"
+                      cachedDataType="numeric"
+                      cachedName="product_photos_qty"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_photos_qty]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_photos_qty]" />
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_weight_g]"
+                      cachedDataType="numeric"
+                      cachedName="product_weight_g"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_weight_g]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]" />
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_length_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_length_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_length_cm]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]" />
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_height_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_height_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_height_cm]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]" />
+                    <inputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_width_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_width_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_width_cm]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_category_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name_length]"
+                      dataType="numeric"
+                      name="product_name_length"
+                      precision="9"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_description_length]"
+                      dataType="numeric"
+                      name="product_description_length"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_photos_qty]"
+                      dataType="numeric"
+                      name="product_photos_qty"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_weight_g]"
+                      dataType="numeric"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_length_cm]"
+                      dataType="numeric"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_height_cm]"
+                      dataType="numeric"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_width_cm]"
+                      dataType="numeric"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Extract\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Extract\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Products]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Extract\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.Olist]"
+                  connectionManagerRefId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.Olist]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      length="50"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_category_name]"
+                      length="50"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]"
+                      name="product_category_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name_length]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name_length]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name_length]"
+                      name="product_name_length"
+                      precision="9"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_description_length]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_description_length]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_description_length]"
+                      name="product_description_length"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_photos_qty]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_photos_qty]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_photos_qty]"
+                      name="product_photos_qty"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_weight_g]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_length_cm]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_height_cm]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_width_cm]"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_category_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name_length]"
+                      dataType="numeric"
+                      name="product_name_length"
+                      precision="9"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_description_length]"
+                      dataType="numeric"
+                      name="product_description_length"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_photos_qty]"
+                      dataType="numeric"
+                      name="product_photos_qty"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_weight_g]"
+                      dataType="numeric"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_length_cm]"
+                      dataType="numeric"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_height_cm]"
+                      dataType="numeric"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_width_cm]"
+                      dataType="numeric"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_category_name]"
+                      name="product_category_name" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name_length]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name_length]"
+                      name="product_name_length"
+                      precision="9"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_description_length]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_description_length]"
+                      name="product_description_length"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_photos_qty]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_photos_qty]"
+                      name="product_photos_qty"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_weight_g]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_weight_g]"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_length_cm]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_length_cm]"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_height_cm]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_height_cm]"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_width_cm]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_width_cm]"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Extract.Paths[OLE DB Source Output]"
+              endId="Package\DF - Extract\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Extract\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DF - Load"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{38935971-ce29-45a7-bf39-1f35711a57a9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF - Load"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF - Load\Insert Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Insert Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProducts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load\Insert Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]" />
+                    <inputColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[product_category_name]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_category_name"
+                      externalMetadataColumnId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_category_name]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]" />
+                    <inputColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[product_weight_g]"
+                      cachedDataType="numeric"
+                      cachedName="product_weight_g"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_weight_g]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]" />
+                    <inputColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[product_length_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_length_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_length_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]" />
+                    <inputColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[product_height_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_height_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_height_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]" />
+                    <inputColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].Columns[product_width_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_width_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_width_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[productKey]"
+                      dataType="i4"
+                      name="productKey" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_category_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_weight_g]"
+                      dataType="numeric"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_length_cm]"
+                      dataType="numeric"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_height_cm]"
+                      dataType="numeric"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_width_cm]"
+                      dataType="numeric"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load\Insert Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load\Insert Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load\OLE DB Command"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="OLE DB Command"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DimProducts] SET [product_category_name] = ?,[product_height_cm] = ?,[product_length_cm] = ?,[product_weight_g] = ?,[product_width_cm] = ? WHERE [product_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1258</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load\OLE DB Command.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistDW]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[product_category_name]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_category_name"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]" />
+                    <inputColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[product_height_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_height_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]" />
+                    <inputColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[product_id]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]" />
+                    <inputColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[product_length_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_length_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]" />
+                    <inputColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[product_weight_g]"
+                      cachedDataType="numeric"
+                      cachedName="product_weight_g"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]" />
+                    <inputColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].Columns[product_width_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_width_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                      dataType="numeric"
+                      name="Param_1"
+                      precision="10"
+                      scale="1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                      dataType="numeric"
+                      name="Param_2"
+                      precision="10"
+                      scale="1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                      dataType="numeric"
+                      name="Param_3"
+                      precision="10"
+                      scale="1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                      dataType="numeric"
+                      name="Param_4"
+                      precision="10"
+                      scale="1">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="Param_5">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">65</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load\OLE DB Command.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load\OLE DB Command.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load\OLE DB Command.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[stgProducts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistStage 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistStage 1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      length="50"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_category_name]"
+                      length="50"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]"
+                      name="product_category_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name_length]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name_length]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_name_length]"
+                      name="product_name_length"
+                      precision="9"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_description_length]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_description_length]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_description_length]"
+                      name="product_description_length"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_photos_qty]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_photos_qty]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_photos_qty]"
+                      name="product_photos_qty"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_weight_g]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_length_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_height_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_width_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_category_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name_length]"
+                      dataType="numeric"
+                      name="product_name_length"
+                      precision="9"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_description_length]"
+                      dataType="numeric"
+                      name="product_description_length"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_photos_qty]"
+                      dataType="numeric"
+                      name="product_photos_qty"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_weight_g]"
+                      dataType="numeric"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_length_cm]"
+                      dataType="numeric"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_height_cm]"
+                      dataType="numeric"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_width_cm]"
+                      dataType="numeric"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_category_name]"
+                      name="product_category_name" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name_length]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_name_length]"
+                      name="product_name_length"
+                      precision="9"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_description_length]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_description_length]"
+                      name="product_description_length"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_photos_qty]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_photos_qty]"
+                      name="product_photos_qty"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_weight_g]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_weight_g]"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_length_cm]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_length_cm]"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_height_cm]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_height_cm]"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_width_cm]"
+                      dataType="numeric"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_width_cm]"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF - Load\Slowly Changing Dimension"
+              componentClassID="Microsoft.SCD"
+              contactInfo="Slowly Changing Dimension;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;3"
+              description="Updates a SQL Server Analysis Services data warehouse dimension. Update dimension records that are already present and  insert dimension records that aren't. For example, update the DimProduct table of the AdventureWorksDW OLAP database with data from the Products table in the AdventureWorks OLTP database."
+              name="Slowly Changing Dimension"
+              version="3">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SELECT statement used to create a schema rowset."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [product_category_name], [product_height_cm], [product_id], [product_length_cm], [product_weight_g], [product_width_cm] FROM [dbo].[DimProducts]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the WHERE clause in the SELECT statement that selects the current row among rows with identical business keys."
+                  name="CurrentRowWhere"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether historical attribute updates are directed to the transformation output for changing attribute updates."
+                  name="UpdateChangingAttributeHistory">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when columns with fixed attributes contain changes."
+                  name="FailOnFixedAttributeChange">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the column name for the inferred member."
+                  name="InferredMemberIndicator"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether inferred member updates are detected."
+                  name="EnableInferredMember">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the transformation fails when a lookup of an existing record fails."
+                  name="FailOnLookupFailure">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies that all rows in the input are new or the transformation detects the change type."
+                  name="IncomingRowChangeType"
+                  typeConverter="IncomingRowChangeType">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF - Load\Slowly Changing Dimension.Connections[LookupConnection]"
+                  connectionManagerID="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistDW]"
+                  connectionManagerRefId="Package.ConnectionManagers[NHATNAM-SLAVE\NHATNAM.OlistDW]"
+                  description="Defines the connection to use for lookups in the dimension table"
+                  name="LookupConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+                  name="Slowly Changing Dimension Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[product_category_name]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_category_name"
+                      externalMetadataColumnId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_category_name]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[product_height_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_height_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_height_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[product_id]"
+                      cachedCodepage="1258"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_id]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[product_length_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_length_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_length_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[product_weight_g]"
+                      cachedDataType="numeric"
+                      cachedName="product_weight_g"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_weight_g]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].Columns[product_width_cm]"
+                      cachedDataType="numeric"
+                      cachedName="product_width_cm"
+                      cachedPrecision="10"
+                      cachedScale="1"
+                      externalMetadataColumnId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_width_cm]"
+                      lineageId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          name="ColumnType"
+                          typeConverter="ColumnType">2</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_category_name]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_category_name" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_height_cm]"
+                      dataType="numeric"
+                      name="product_height_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_id]"
+                      codePage="1258"
+                      dataType="str"
+                      length="50"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_length_cm]"
+                      dataType="numeric"
+                      name="product_length_cm"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_weight_g]"
+                      dataType="numeric"
+                      name="product_weight_g"
+                      precision="10"
+                      scale="1" />
+                    <externalMetadataColumn
+                      refId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input].ExternalColumns[product_width_cm]"
+                      dataType="numeric"
+                      name="product_width_cm"
+                      precision="10"
+                      scale="1" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF - Load\Slowly Changing Dimension.Outputs[Unchanged Output]"
+                  description="Unchanged rows"
+                  exclusionGroup="1"
+                  name="Unchanged Output"
+                  synchronousInputId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load\Slowly Changing Dimension.Outputs[New Output]"
+                  description="New rows"
+                  exclusionGroup="1"
+                  name="New Output"
+                  synchronousInputId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load\Slowly Changing Dimension.Outputs[Fixed Attribute Output]"
+                  description="Rows with changes in columns tagged FixedAttribute"
+                  exclusionGroup="1"
+                  name="Fixed Attribute Output"
+                  synchronousInputId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]"
+                  description="These rows contain new information for ChangingAttribute (Type 1) column changes"
+                  exclusionGroup="1"
+                  name="Changing Attribute Updates Output"
+                  synchronousInputId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load\Slowly Changing Dimension.Outputs[Historical Attribute Inserts Output]"
+                  description="HistoricalAttribute (Type 2) changes result in these new rows"
+                  exclusionGroup="2"
+                  name="Historical Attribute Inserts Output"
+                  synchronousInputId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DF - Load\Slowly Changing Dimension.Outputs[Inferred Member Updates Output]"
+                  description="Information to update unpopulated initial dimension row"
+                  exclusionGroup="1"
+                  name="Inferred Member Updates Output"
+                  synchronousInputId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF - Load.Paths[Changing Attribute Updates Output]"
+              endId="Package\DF - Load\OLE DB Command.Inputs[OLE DB Command Input]"
+              name="Changing Attribute Updates Output"
+              startId="Package\DF - Load\Slowly Changing Dimension.Outputs[Changing Attribute Updates Output]" />
+            <path
+              refId="Package\DF - Load.Paths[New Output]"
+              endId="Package\DF - Load\Insert Destination.Inputs[OLE DB Destination Input]"
+              name="New Output"
+              startId="Package\DF - Load\Slowly Changing Dimension.Outputs[New Output]" />
+            <path
+              refId="Package\DF - Load.Paths[OLE DB Source Output]"
+              endId="Package\DF - Load\Slowly Changing Dimension.Inputs[Slowly Changing Dimension Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF - Load\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL - Truncate"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{15c4c5a3-6324-454f-86d7-dee98bc0ad5d}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL - Truncate"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{E51AF4E3-A79C-4980-8FDD-B99129D13AF5}"
+          SQLTask:SqlStatementSource="truncate table stgProducts;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{c7fbb9b9-aeef-478b-8cf3-6b48a6164194}"
+      DTS:From="Package\SQL - Truncate"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF - Extract" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{2769a016-2cde-4aa6-a59b-6241349cc87c}"
+      DTS:From="Package\DF - Extract"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DF - Load" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\SQL - Truncate"
+          TopLeft="60,58.7000000619888" />
+        <NodeLayout
+          Size="136,42.6666666666667"
+          Id="Package\DF - Extract"
+          TopLeft="91.8749985750766,171.799994668961" />
+        <NodeLayout
+          Size="125.333333333334,42.6666666666667"
+          Id="Package\DF - Load"
+          TopLeft="80.6249990779906,257.566662141482" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="135.333333333333,101.366666728656">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="24.5416652417433,70.4333279403055"
+              Start="0,0"
+              End="24.5416652417433,62.9333279403055">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.2166639701528" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31.2166639701528"
+                    Point2="0,35.2166639701528"
+                    Point3="4,35.2166639701528" />
+                  <mssgle:LineSegment
+                    End="20.5416652417433,35.2166639701528" />
+                  <mssgle:CubicBezierSegment
+                    Point1="20.5416652417433,35.2166639701528"
+                    Point2="24.5416652417433,35.2166639701528"
+                    Point3="24.5416652417433,39.2166639701528" />
+                  <mssgle:LineSegment
+                    End="24.5416652417433,62.9333279403055" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="159.874998575077,214.466661335627">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16.5833328304193,43.1000008058548"
+              Start="0,0"
+              End="-16.5833328304193,35.6000008058548">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.5500004029274" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.5500004029274"
+                    Point2="0,21.5500004029274"
+                    Point3="-4,21.5500004029274" />
+                  <mssgle:LineSegment
+                    End="-12.5833328304193,21.5500004029274" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12.5833328304193,21.5500004029274"
+                    Point2="-16.5833328304193,21.5500004029274"
+                    Point3="-16.5833328304193,25.5500004029274" />
+                  <mssgle:LineSegment
+                    End="-16.5833328304193,35.6000008058548" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF - Extract">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\DF - Extract\OLE DB Source"
+          TopLeft="133.124994048849,52.6499974894525" />
+        <NodeLayout
+          Size="172,42.6666666666667"
+          Id="Package\DF - Extract\OLE DB Destination"
+          TopLeft="109.999995082617,158.599992437363" />
+        <EdgeLayout
+          Id="Package\DF - Extract.Paths[OLE DB Source Output]"
+          TopLeft="208.458327382182,95.3166641561191">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-12.4583322995653,63.2833282812438"
+              Start="0,0"
+              End="-12.4583322995653,55.7833282812438">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.6416641406219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.6416641406219"
+                    Point2="0,31.6416641406219"
+                    Point3="-4,31.6416641406219" />
+                  <mssgle:LineSegment
+                    End="-8.45833229956528,31.6416641406219" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-8.45833229956528,31.6416641406219"
+                    Point2="-12.4583322995653,31.6416641406219"
+                    Point3="-12.4583322995653,35.6416641406219" />
+                  <mssgle:LineSegment
+                    End="-12.4583322995653,55.7833282812438" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\DF - Load">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="150.666666666667,42.6666666666667"
+          Id="Package\DF - Load\OLE DB Source"
+          TopLeft="238.166666666667,5.50000000000004" />
+        <NodeLayout
+          Size="209.333333333334,42.6666666666667"
+          Id="Package\DF - Load\Slowly Changing Dimension"
+          TopLeft="208.833333333333,108.166666666667" />
+        <EdgeLayout
+          Id="Package\DF - Load.Paths[OLE DB Source Output]"
+          TopLeft="313.5,48.1666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.0000000000001"
+              Start="0,0"
+              End="0,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="164,42.6666666666667"
+          Id="Package\DF - Load\Insert Destination"
+          TopLeft="5.50000000000006,210.833333333334" />
+        <EdgeLayout
+          Id="Package\DF - Load.Paths[New Output]"
+          TopLeft="279.944444444444,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-192.444444444444,60.0000000000001"
+              Start="0,0"
+              End="-192.444444444444,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2730720606827" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2730720606827"
+                    Point2="0,24.2730720606827"
+                    Point3="-4,24.2730720606827" />
+                  <mssgle:LineSegment
+                    End="-188.444444444444,24.2730720606827" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-188.444444444444,24.2730720606827"
+                    Point2="-192.444444444444,24.2730720606827"
+                    Point3="-192.444444444444,28.2730720606827" />
+                  <mssgle:LineSegment
+                    End="-192.444444444444,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-123.313608940972,29.2730720606827,54.1827734375,11.43359375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="166.666666666667,42.6666666666667"
+          Id="Package\DF - Load\OLE DB Command"
+          TopLeft="230.166666666667,210.833333333334" />
+        <EdgeLayout
+          Id="Package\DF - Load.Paths[Changing Attribute Updates Output]"
+          TopLeft="347.055555555556,150.833333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-33.5555555555555,60.0000000000001"
+              Start="0,0"
+              End="-33.5555555555555,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.2730720606827" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.2730720606827"
+                    Point2="0,24.2730720606827"
+                    Point3="-4,24.2730720606827" />
+                  <mssgle:LineSegment
+                    End="-29.5555555555555,24.2730720606827" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-29.5555555555555,24.2730720606827"
+                    Point2="-33.5555555555555,24.2730720606827"
+                    Point3="-33.5555555555555,28.2730720606827" />
+                  <mssgle:LineSegment
+                    End="-33.5555555555555,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-95.3116840277778,29.2730720606827,157.0678125,11.6630859375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Extract\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Extract\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Load\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF - Load\Slowly Changing Dimension">
+    <Properties>
+      <Property>
+        <Name>SCDMetadata</Name>
+        <Value
+          type="q2:string">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SCDWizardMetadata xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionID&gt;{4E73D3B6-5831-4045-8F74-7D7344491FC9}&lt;/ConnectionID&gt;
+  &lt;TableName&gt;[dbo].[DimProducts]&lt;/TableName&gt;
+  &lt;InputToColumnsCollection&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[product_category_name]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;product_category_name&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[product_height_cm]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;product_height_cm&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[product_id]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;product_id&lt;/ColumnName&gt;
+      &lt;KeyType&gt;BusinessKey&lt;/KeyType&gt;
+      &lt;ChangeType&gt;None&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[product_length_cm]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;product_length_cm&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[product_weight_g]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;product_weight_g&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+    &lt;InputColumnToDBColumn&gt;
+      &lt;IdentificationString&gt;OLE DB Source.Outputs[OLE DB Source Output].Columns[product_width_cm]&lt;/IdentificationString&gt;
+      &lt;ColumnName&gt;product_width_cm&lt;/ColumnName&gt;
+      &lt;KeyType&gt;None&lt;/KeyType&gt;
+      &lt;ChangeType&gt;ChangingAttribute&lt;/ChangeType&gt;
+    &lt;/InputColumnToDBColumn&gt;
+  &lt;/InputToColumnsCollection&gt;
+  &lt;GeneratedComponentsIdentificationStrings&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;Insert Destination&lt;/anyType&gt;
+    &lt;anyType xsi:type="xsd:string"&gt;OLE DB Command&lt;/anyType&gt;
+  &lt;/GeneratedComponentsIdentificationStrings&gt;
+  &lt;FailFixedAttribute&gt;false&lt;/FailFixedAttribute&gt;
+  &lt;FailChangeAttribute&gt;true&lt;/FailChangeAttribute&gt;
+  &lt;UseStartEndDate&gt;false&lt;/UseStartEndDate&gt;
+  &lt;CurrentIndicatorColumn /&gt;
+  &lt;InferredIndicatorColumn /&gt;
+  &lt;ValueCurrent /&gt;
+  &lt;ValueExpired /&gt;
+  &lt;StartDateColumn /&gt;
+  &lt;EndDateColumn /&gt;
+  &lt;DateVariable /&gt;
+  &lt;EnableInferredSupport&gt;false&lt;/EnableInferredSupport&gt;
+&lt;/SCDWizardMetadata&gt;</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
